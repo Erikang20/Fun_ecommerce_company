@@ -1,1 +1,11 @@
-// this is your cart page.
+import React from "react";
+
+const Cart = () => {
+	return (
+		<main>
+			<h1>CART</h1>
+		</main>
+	);
+};
+
+export default Cart;
