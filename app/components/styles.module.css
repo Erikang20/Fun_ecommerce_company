@@ -1,0 +1,44 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin: 20px;
+	margin-right: auto;
+}
+
+.navContainer {
+	display: flex;
+	padding: 20px;
+	align-content: space-around;
+	flex-wrap: wrap;
+}
+
+.navContainer a:link {
+	padding: 0 10px;
+}
+
+/* .shoppingCartContainer {
+	display: flex;
+} */
+
+.shoppingCart {
+	height: 3rem;
+	border-radius: 50%;
+	text-align: center;
+	bottom: 10px;
+	position: relative;
+}
+
+.cartCounter {
+	display: flex;
+	border-radius: 50%;
+	background-color: red;
+	justify-content: center;
+	align-items: center;
+	width: 20px;
+	color: white;
+	height: 20px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	transform: translate(30% 30%);
+}

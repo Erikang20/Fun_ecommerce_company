@@ -1,5 +1,7 @@
+import Image from "next/image";
 import { getLocalData } from "../lib/collectionData";
 import { MainBody } from "./mainBody";
+import styles from "./page.module.css";
 
 type Product = {
 	product_id: number;
@@ -17,14 +19,25 @@ type Product = {
 
 async function Collections() {
 	const data = await getLocalData();
-	console.log(data);
 
 	return (
 		<main>
-			Products:
+			<h1>Products:</h1>
 			<div>
 				{data.map((item: Product) => (
-					<MainBody key={item.product_id} name={item.product_name} />
+					<MainBody
+						key={item.product_id}
+						name={item.product_name}
+						category={item.category}
+						brand={item.brand}
+						color={item.color}
+						description={item.description}
+						img={<Image src={item.image_url} alt={""} width={10} height={20} />}
+						inStock={item.quantity_in_stock}
+						price={item.price}
+						release_date={item.release_date}
+						size={item.size}
+					/>
 				))}
 			</div>
 		</main>
