@@ -1,20 +1,34 @@
-import { collectionData } from "./lib/collectionData";
+import { getLocalData } from "../lib/collectionData";
+import { MainBody } from "./mainBody";
 
-export default async function getStaticProps() {
-	const data = await collectionData();
+type Product = {
+	product_id: number;
+	product_name: string;
+	description: string;
+	price: number;
+	quantity_in_stock: number;
+	category: string;
+	brand: string;
+	color: string;
+	size: string;
+	release_date: string;
+	image_url: string;
+};
+
+async function Collections() {
+	const data = await getLocalData();
 	console.log(data);
-	// <main>
-	// 	<h1>Collections: {data}</h1>
-	// </main>
 
-	return { props: { data } };
+	return (
+		<main>
+			Products:
+			<div>
+				{data.map((item: Product) => (
+					<MainBody key={item.product_id} name={item.product_name} />
+				))}
+			</div>
+		</main>
+	);
 }
 
-// export async function getStaticProps() {
-//   // Instead of fetching your `/api` route you can call the same
-//   // function directly in `getStaticProps`
-//   const posts = await loadPosts()
-
-//   // Props returned will be passed to the page component
-//   return { props: { posts } }
-// }
+export default Collections;
