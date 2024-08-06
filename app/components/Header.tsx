@@ -4,7 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./styles.module.css";
 import ShoppingCart from "@assets/shopping-cart.svg";
-import { Filters } from "./Filters";
+import SearchIcon from "@assets/search.svg";
+import HomeIcon from "@assets/home.svg";
+import AboutUs from "@assets/about-us.svg";
 
 export const Header = () => {
 	const handleClick = () => {
@@ -18,21 +20,25 @@ export const Header = () => {
 			</div>
 
 			<nav className={styles.navContainer}>
-				<Link href="/">Home</Link>
-				<Link href="/collections">Products</Link>
-				{/* <Link href="/category">Categories</Link>
-				 */}
-				{/* <button> */}
-				<Filters />
-				{/* </button> */}
-				<Link href="/cart">Shopping cart</Link>
-				<Link href="/about">About us</Link>
-
+				<Link href="/category">Categories</Link>
+				<Link href="/">
+					<Image src={HomeIcon} alt={""} height={40} width={50} />
+				</Link>
+				<Link href="/collections">
+					<Image src={SearchIcon} alt={""} height={40} width={50} />
+				</Link>
+				<Link href="/about">
+					<Image src={AboutUs} alt={""} height={40} width={50} />
+				</Link>
 				<div className={styles.shoppingCartContainer}>
-					<button className={styles.shoppingCart} onClick={handleClick}>
+					<Link
+						href="/cart"
+						className={styles.shoppingCart}
+						onClick={handleClick}
+					>
 						<Image src={ShoppingCart} alt={""} height={40} width={50} />
 						<div className={styles.cartCounter}>3</div>
-					</button>
+					</Link>
 				</div>
 			</nav>
 		</div>

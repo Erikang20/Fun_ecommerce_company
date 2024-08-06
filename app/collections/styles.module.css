@@ -13,6 +13,7 @@
 	justify-content: space-between;
 	margin-right: auto;
 	border: 5px solid red;
+	width: 600px;
 }
 
 .productHeader {
@@ -31,12 +32,19 @@
 	margin: 10px 0;
 }
 
-.extraInfo {
-	margin-top: 10px;
+.addButton {
+	font-family: var(--font-mono);
+	background-color: #2b2c37;
+	border-radius: 20px;
+	color: white;
+	padding: 10px;
+	box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
-.addRemoveBtns {
+.extraInfo {
 	display: flex;
+	margin-top: 10px;
+	justify-content: space-around;
 }
 
 /* Tablet and Smaller Desktop */

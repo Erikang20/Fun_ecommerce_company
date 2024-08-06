@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import styles from "./styles.module.css";
 
 type Checkout = {
 	name: string;
@@ -36,15 +37,20 @@ const Cart = ({ name, price, quantity }: Checkout) => {
 	};
 
 	return (
-		<main>
-			<h1>Checkout</h1>
-			<div>{name}</div>
-			<div>{price}</div>
-			<div>{quantity}</div>
-			<button onClick={addItems}>Add</button>
-			<button onClick={removeItem}>Remove</button>
+		<>
+			<h1>Shopping Cart</h1>
+			<div className={styles.checkoutList}>
+				<div>name: {name}</div>
+				<div>price{price}</div>
+				<div>quantity{quantity}</div>
+				<div>Taxes</div>
+				<div>total Price</div>
+				<button onClick={addItems}>Add</button>
+				<button onClick={removeItem}>Remove</button>
+			</div>
+
 			<button>Checkout</button>
-		</main>
+		</>
 	);
 };
 

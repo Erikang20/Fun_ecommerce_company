@@ -3,6 +3,7 @@
 	justify-content: space-between;
 	margin: 20px;
 	margin-right: auto;
+	font-family: var(--font-mono);
 }
 
 .navContainer {
@@ -14,6 +15,7 @@
 
 .navContainer a:link {
 	padding: 0 10px;
+	text-decoration: none;
 }
 
 .shoppingCart {
@@ -36,5 +38,14 @@
 	position: absolute;
 	bottom: 0;
 	right: 0;
-	transform: translate(30% 30%);
+	transform: translate(-5px, -80%);
+}
+
+.searchProductContainer {
+	display: flex;
+	margin: 30px;
+}
+
+.searchFilters {
+	padding: 0 20px;
 }
