@@ -1,4 +1,19 @@
-.productContainer {
+.inventory {
 	display: grid;
-	justify-items: center;
+	grid-template-columns: repeat(3, 600px);
+	grid-template-rows: repeat(3, 400px);
+}
+
+.productContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 20px;
+	margin-right: auto;
+	border: 5px solid red;
+}
+
+.productHeader {
+	display: flex;
+	justify-content: space-between;
 }

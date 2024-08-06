@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { getLocalData } from "../lib/collectionData";
-import { MainBody } from "./mainBody";
+import { Product } from "./product";
 import { SearchProduct } from "../components/SearchProduct";
-import styles from "./page.module.css";
+import styles from "./styles.module.css";
 
 type Product = {
 	product_id: number;
@@ -25,16 +25,18 @@ async function Collections() {
 		<main>
 			<h1>Products:</h1>
 			<SearchProduct />
-			<div>
+			<div className={styles.inventory}>
 				{data.map((item: Product) => (
-					<MainBody
+					<Product
 						key={item.product_id}
 						name={item.product_name}
 						category={item.category}
 						brand={item.brand}
 						color={item.color}
 						description={item.description}
-						img={<Image src={item.image_url} alt={""} width={10} height={20} />}
+						img={
+							<Image src={item.image_url} alt={""} width={100} height={100} />
+						}
 						inStock={item.quantity_in_stock}
 						price={item.price}
 						release_date={item.release_date}
