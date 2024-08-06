@@ -2,9 +2,9 @@ import React from "react";
 
 export const SearchProduct = () => {
 	return (
-		<div>
-			<label>Search here</label>
-			<input />
-		</div>
+		<form>
+			<input type="text" />
+			<button>Search</button>
+		</form>
 	);
 };

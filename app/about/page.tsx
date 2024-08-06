@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "./page.module.css";
+import Image from "next/image";
+import DoggoIpsum from "@assets/doggoIpsum.svg";
 
 const AboutUs = () => {
 	return (
 		<main>
 			<h1>About us</h1>
+			<Image src={DoggoIpsum} alt="" width={500} height={500} />
 			<p className="description">
 				Doggo ipsum thicc super chub puggorino h*ck fat boi thicc very hand that
 				feed shibe, shoob boofers pupperino yapper the neighborhood pupper.

@@ -28,6 +28,8 @@ export const Product = ({
 	release_date,
 	size,
 }: ProductProps) => {
+	const quantity = 1;
+
 	return (
 		<div className={styles.productContainer}>
 			<div className={styles.productHeader}>
@@ -36,17 +38,27 @@ export const Product = ({
 				<div>price: {formatPrice(price)}</div>
 			</div>
 
+			<div className={styles.productImg}>{img}</div>
+
 			<div className={styles.productBody}>
-				<div className={styles.productImg}>{img}</div>
-				<div>brand: {brand}</div>
-				<div>color: {color}</div>
-				<div>description: {description}</div>
+				<div className={styles.productDetails}>
+					<div>brand: {brand}</div>
+					<div>color: {color}</div>
+				</div>
+
+				<div>{description}</div>
 			</div>
 			<div className={styles.extraInfo}>
 				<div>inStock: {inStock}</div>
-
 				<div>release_date: {release_date}</div>
 				<div>size: {size}</div>
+			</div>
+			<div className={styles.addRemoveBtnsContainer}>
+				{quantity === 0 ? (
+					<button>Add to Cart</button>
+				) : (
+					<button>Remove</button>
+				)}
 			</div>
 		</div>
 	);

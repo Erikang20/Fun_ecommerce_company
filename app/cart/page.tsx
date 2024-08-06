@@ -19,6 +19,22 @@ const Cart = ({ name, price, quantity }: Checkout) => {
 		console.log("Remove", itemsInCart);
 	};
 
+	const addRemoveBtns = () => {
+		return (
+			<div className={styles.addRemoveBtns}>
+				<div>
+					<button>-</button>
+					<div>
+						<span>{quantity}</span>
+						In Cart
+					</div>
+					<button>+</button>
+				</div>
+				<button>Remove</button>
+			</div>
+		);
+	};
+
 	return (
 		<main>
 			<h1>Checkout</h1>
