@@ -1,0 +1,4 @@
+.productContainer {
+	display: grid;
+	justify-items: center;
+}

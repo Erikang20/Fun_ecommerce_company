@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getLocalData } from "../lib/collectionData";
 import { MainBody } from "./mainBody";
+import { SearchProduct } from "../components/SearchProduct";
 import styles from "./page.module.css";
 
 type Product = {
@@ -23,6 +24,7 @@ async function Collections() {
 	return (
 		<main>
 			<h1>Products:</h1>
+			<SearchProduct />
 			<div>
 				{data.map((item: Product) => (
 					<MainBody
