@@ -41,11 +41,60 @@
 	transform: translate(-5px, -80%);
 }
 
-.searchProductContainer {
+.searchAndFilterContainer {
 	display: flex;
-	margin: 30px;
+	flex-direction: row;
+	justify-content: flex-end;
 }
 
 .searchFilters {
-	padding: 0 20px;
+	display: flex;
+}
+
+.filterButtons {
+	display: flex;
+}
+
+.searchElements {
+	display: flex;
+	justify-content: space-around;
+	height: 25px;
+	margin: 0 15px;
+}
+
+.searchProductContainer {
+	margin: 30px;
+}
+
+.inventory,
+.searchResult {
+	display: grid;
+	grid-template-columns: repeat(3, 600px);
+	grid-template-rows: repeat(3, 400px);
+	width: var(--max-width);
+	gap: 20px;
+	margin-left: 30px;
+}
+
+.productContainer {
+	border: 1px solid rgba(var(--card-border-rgb), 0);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-right: auto;
+	border: 5px solid red;
+	width: 500px;
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 1000px) and (max-width: 1790px) {
+	.inventory {
+		grid-template-columns: repeat(2, 50%);
+	}
+}
+
+@media (min-width: 400px) and (max-width: 1120px) {
+	.inventory {
+		grid-template-columns: repeat(1, 40%);
+	}
 }

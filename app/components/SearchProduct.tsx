@@ -1,24 +1,10 @@
-// SearchProduct.tsx
 "use client";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
-import { DropDownButton } from "./DropDownButton";
-import { Product } from "../collections/product";
-
-type ProductType = {
-	product_id: number;
-	product_name: string;
-	description: string;
-	price: number;
-	quantity_in_stock: number;
-	category: string;
-	brand: string;
-	color: string;
-	size: string;
-	release_date: string;
-	image_url: string;
-};
+import { ProductList } from "../collections/ProductList";
+import SearchIcon from "@assets/search.svg";
+import { ProductType } from "../types/productTypes";
 
 type SearchProductProps = {
 	products: ProductType[];
@@ -26,73 +12,61 @@ type SearchProductProps = {
 
 export const SearchProduct = ({ products }: SearchProductProps) => {
 	const [querySearch, setQuerySearch] = useState("");
+	const [filteredCategory, setFilteredCategory] = useState<string | null>(null);
 
 	const resultList = useMemo(() => {
+		if (filteredCategory) {
+			return products.filter(
+				(product) =>
+					product.category === filteredCategory &&
+					product.product_name.toLowerCase().includes(querySearch.toLowerCase())
+			);
+		}
 		return products.filter((product) =>
 			product.product_name.toLowerCase().includes(querySearch.toLowerCase())
 		);
-	}, [products, querySearch]);
+	}, [products, querySearch, filteredCategory]);
+
+	const itemsCategories = [...new Set(products.map((item) => item.category))];
+
+	const handleFilter = (category: string) => {
+		setFilteredCategory(category);
+	};
 
 	return (
-		<div>
-			<label>Search for your favorite product</label>
-			<input
-				onChange={(e) => setQuerySearch(e.target.value)}
-				value={querySearch}
-				type="search"
-			/>
-			<div className={styles.searchProductContainer}>
-				{querySearch && (
-					<>
-						<h3>Results:</h3>
-						{resultList.length > 0 ? (
-							resultList.map((product) => (
-								<Product
-									key={product.product_id}
-									name={product.product_name}
-									category={product.category}
-									brand={product.brand}
-									color={product.color}
-									description={product.description}
-									img={<img src={product.image_url} width={100} height={100} />}
-									inStock={product.quantity_in_stock}
-									price={product.price}
-									release_date={product.release_date}
-									size={product.size}
-								/>
-							))
-						) : (
-							<div>No results found</div>
-						)}
-					</>
-				)}
-				{!querySearch && (
-					<div className={styles.inventory}>
-						{products.map((product) => (
-							<div key={product.product_id}>
-								<Product
-									name={product.product_name}
-									category={product.category}
-									brand={product.brand}
-									color={product.color}
-									description={product.description}
-									img={<img src={product.image_url} width={100} height={100} />}
-									inStock={product.quantity_in_stock}
-									price={product.price}
-									release_date={product.release_date}
-									size={product.size}
-								/>
-							</div>
-						))}
-					</div>
-				)}
+		<>
+			<div className={styles.searchAndFilterContainer}>
+				<div className={styles.searchElements}>
+					<Image src={SearchIcon} alt={""} height={30} width={30} />
+					<input
+						onChange={(e) => setQuerySearch(e.target.value)}
+						value={querySearch}
+						type="search"
+					/>
+				</div>
+
 				<div className={styles.searchFilters}>
-					<label>Sort by</label>
-					<DropDownButton name1="TEST1" name2="TEST2" />
-					<label>Filter by</label>
-					<DropDownButton name1="Filter1" name2="Filter2" />
+					<label>Sort by: </label>
+					{itemsCategories.map((item, index) => (
+						<div key={index} className={styles.filterButtons}>
+							<button onClick={() => handleFilter(item)}>{item}</button>
+						</div>
+					))}
+					<button onClick={() => setFilteredCategory(null)}>
+						Clear Filters
+					</button>
 				</div>
 			</div>
-		</div>
+
+			<div className={styles.searchProductContainer}>
+				<div className={styles.searchResult}>
+					{resultList.length > 0 ? (
+						<ProductList products={resultList} />
+					) : (
+						<div>No results found</div>
+					)}
+				</div>
+			</div>
+		</>
 	);
 };
