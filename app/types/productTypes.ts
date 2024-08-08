@@ -1,5 +1,5 @@
 export type ProductType = {
-	product_id: number;
+	product_id: string;
 	product_name: string;
 	description: string;
 	price: number;
@@ -9,5 +9,10 @@ export type ProductType = {
 	color: string;
 	size: string;
 	release_date: string;
-	image_url: string;
+	image_url: any;
+};
+
+export type CartItemType = {
+	product: ProductType;
+	quantity: number;
 };
