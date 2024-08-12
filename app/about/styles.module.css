@@ -8,25 +8,16 @@
 	align-content: space-around;
 	flex-wrap: wrap;
 	flex-direction: column;
+	margin: 40px;
 	align-items: center;
 }
 
-.main h2 {
-	font-weight: 600;
+.aboutUsHeading {
+	display: flex;
+	justify-content: center;
 }
 
-/* Mobile */
-@media (max-width: 700px) {
-	.main {
-		padding: 4rem;
-	}
-}
-
-@keyframes rotate {
-	from {
-		transform: rotate(360deg);
-	}
-	to {
-		transform: rotate(0deg);
-	}
+.description {
+	margin: 10px;
+	max-width: 900px;
 }

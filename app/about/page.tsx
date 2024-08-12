@@ -1,14 +1,14 @@
 import React from "react";
-import styles from "./page.module.css";
+import styles from "./styles.module.css";
 import Image from "next/image";
 import DoggoIpsum from "@assets/doggoIpsum.svg";
 
 const AboutUs = () => {
 	return (
-		<main>
-			<h1>About us</h1>
+		<main className={styles.main}>
+			<h1 className={styles.aboutUsHeading}>About us</h1>
 			<Image src={DoggoIpsum} alt="" width={500} height={500} />
-			<p className="description">
+			<p className={styles.description}>
 				Doggo ipsum thicc super chub puggorino h*ck fat boi thicc very hand that
 				feed shibe, shoob boofers pupperino yapper the neighborhood pupper.
 				Woofer long bois puggorino long woofer, long bois. Shibe long water

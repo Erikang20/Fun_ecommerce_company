@@ -12,7 +12,7 @@
 	gap: 6px;
 	width: max-content;
 	position: absolute;
-	top: 20px;
+	top: 60px;
 	right: 20px;
 	z-index: 2;
 	cursor: pointer;
@@ -56,16 +56,12 @@
 	rotate: 45deg;
 	width: var(--x-width);
 	translate: 0 calc(var(--bar-height) / -2);
-	/* z-index: 2; */
-	/* background-color: var(--background); */
 }
 
 .hamburgerBtn:has(input:checked)::after {
 	rotate: -45deg;
 	width: var(--x-width);
 	translate: 0 calc(var(--bar-height) / 2);
-	/* z-index: 2; */
-	/* background-color: var(--background); */
 }
 
 .hamburgerBtn input:checked {
@@ -77,9 +73,8 @@
 	translate: 300%;
 	position: relative;
 	padding: 0.5rem 23px;
-	padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
-	left: 91%;
-	/* z-index: 2; */
+	padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 2rem);
+	left: 171%;
 	background-color: var(--foreground);
 	color: var(--background);
 	height: 100vh;
@@ -88,7 +83,7 @@
 }
 
 .hamburgerBtn:has(input:checked) + .sidebarHamburger {
-	translate: 60%;
+	translate: -86%;
 }
 
 .navContainer {
@@ -97,38 +92,15 @@
 }
 
 .navContainer a {
-	padding: 0 0 10px;
+	padding: 20px 0 10px;
 	text-decoration: none;
-	color: rgba(255, 255, 255, 0.75);
+	color: rgba(255, 255, 255, 0.65);
 	transition: all 0.4s;
 }
 
 .navContainer a:hover {
 	color: rgba(255, 255, 255, 1);
 }
-
-/* .cartCounter {
-	display: flex;
-	border-radius: 50%;
-	background-color: red;
-	justify-content: center;
-	align-items: center;
-	width: 20px;
-	color: white;
-	height: 20px;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	transform: translate(-5px, -80%);
-}
-
-.shoppingCart {
-	height: 3rem;
-	border-radius: 50%;
-	text-align: center;
-	bottom: 10px;
-	position: relative;
-} */
 
 .searchAndFilterContainer {
 	display: flex;

@@ -18,8 +18,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<div className="mainBody">
-					{/* <h1>Doggo Ipsum</h1> */}
+				<div className="container">
+					<h1 className="mainHeading">Doggo Ipsum</h1>
 					<ButtonMenu />
 					{children}
 				</div>
