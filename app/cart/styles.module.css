@@ -1,3 +1,17 @@
+.main {
+	display: flex;
+	font-family: var(--font-mono);
+	position: relative;
+	bottom: 900px;
+	overflow-x: hidden;
+	align-content: space-around;
+	flex-wrap: wrap;
+	flex-direction: column;
+	margin: 0 40px;
+	align-items: center;
+	overflow-x: hidden;
+}
+
 .addRemoveBtns {
 	display: flex;
 }

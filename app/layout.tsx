@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ButtonMenu } from "./components/Button";
@@ -19,7 +20,9 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={inter.className}>
 				<div className="container">
-					<h1 className="mainHeading">Doggo Ipsum</h1>
+					<Link href="/">
+						<h1 className="mainHeading">Doggo Ipsum</h1>
+					</Link>
 					<ButtonMenu />
 					{children}
 				</div>

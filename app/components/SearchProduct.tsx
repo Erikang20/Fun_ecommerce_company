@@ -39,6 +39,7 @@ export const SearchProduct = ({ products }: SearchProductProps) => {
 				<div className={styles.searchElements}>
 					<Image src={SearchIcon} alt={""} height={30} width={30} />
 					<input
+						className={styles.searchInput}
 						onChange={(e) => setQuerySearch(e.target.value)}
 						value={querySearch}
 						type="search"
@@ -46,13 +47,21 @@ export const SearchProduct = ({ products }: SearchProductProps) => {
 				</div>
 
 				<div className={styles.searchFilters}>
-					<label>Sort by: </label>
+					<label>Filters </label>
 					{itemsCategories.map((item, index) => (
-						<div key={index} className={styles.filterButtons}>
-							<button onClick={() => handleFilter(item)}>{item}</button>
+						<div key={index} className={styles.filterButtonsContainer}>
+							<button
+								className={styles.filterButtons}
+								onClick={() => handleFilter(item)}
+							>
+								{item}
+							</button>
 						</div>
 					))}
-					<button onClick={() => setFilteredCategory(null)}>
+					<button
+						className={styles.filterButtons}
+						onClick={() => setFilteredCategory(null)}
+					>
 						Clear Filters
 					</button>
 				</div>

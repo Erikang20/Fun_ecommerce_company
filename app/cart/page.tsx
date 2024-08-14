@@ -1,16 +1,18 @@
-"use client";
 import React from "react";
 import { CartComponent } from "./CartComponent";
 import { CartProvider, useCart } from "./cartContext";
+import styles from "./styles.module.css";
 
 const Cart = () => {
-	const { cartItems } = useCart();
-	const removeFromCart = () => null;
+	// const { cartItems } = useCart();
 
 	return (
 		<CartProvider>
-			<main>
-				<CartComponent cartItems={cartItems} removeFromCart={removeFromCart} />
+			<main className={styles.main}>
+				<CartComponent
+					cartItems={[]}
+					removeFromCart={() => console.log("boop")}
+				/>
 			</main>
 		</CartProvider>
 	);

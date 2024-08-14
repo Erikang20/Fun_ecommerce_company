@@ -1,20 +1,20 @@
 /**
-* Hamburger button
-*/
+  * Hamburger button
+  */
 
 .hamburgerBtn {
 	/**
-  * using the height of the element and multiplying by the square root of 2
-  */
+    * using the height of the element and multiplying by the square root of 2
+    */
 	--x-width: calc(var(--hamburger-height) * 1.41421356237);
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
 	width: max-content;
 	position: absolute;
-	top: 60px;
+	top: 30px;
 	right: 20px;
-	z-index: 2;
+	z-index: 3;
 	cursor: pointer;
 }
 
@@ -36,7 +36,7 @@
 	content: "";
 	width: var(--bar-width);
 	height: var(--bar-height);
-	background-color: var(--foreground);
+	background-color: white;
 	border-radius: 9999px;
 	transform-origin: left center;
 	transition: opacity var(--animation-timing), width var(--animation-timing),
@@ -80,6 +80,7 @@
 	height: 100vh;
 	transition: translate var(--animation-timing);
 	min-height: 100vh;
+	z-index: 2;
 }
 
 .hamburgerBtn:has(input:checked) + .sidebarHamburger {
@@ -109,23 +110,47 @@
 	margin-bottom: 20px;
 }
 
-.searchFilters {
-	display: flex;
+.searchInput {
+	margin: 0 10px;
 }
 
-.filterButtons {
+.searchFilters {
 	display: flex;
+	align-items: center;
+}
+
+.filterButtonsContainer {
+	display: flex;
+	padding: 0 10px;
 }
 
 .searchElements {
 	display: flex;
 	justify-content: space-around;
-	height: 25px;
-	margin: 0 15px;
+	height: 43px;
+	margin: 0 10px;
+	align-items: center;
 }
 
 .searchProductContainer {
 	margin: 30px;
+}
+
+.filterButtons {
+	font-family: var(--font-mono);
+	background-color: var(--foreground);
+	border: 2px solid rgb(182, 65, 154);
+	border-radius: 20px;
+	color: rgba(255, 255, 255, 0.65);
+	padding: 10px;
+	box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+}
+
+.filterButtons:hover {
+	transition: all 0.4s;
+	background-color: var(--foreground-hover);
+	cursor: pointer;
+	color: rgba(255, 255, 255, 1);
 }
 
 .searchResult {

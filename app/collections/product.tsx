@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import { formatPrice } from "./actions";
 import { ProductType, CartItemType } from "../types/productTypes";
-import { useCart } from "../cart/cartContext";
+import { CartProvider, useCart } from "../cart/cartContext";
 
 type ProductListProps = {
 	products: ProductType[];
@@ -37,12 +37,15 @@ export const Product = ({ products }: ProductListProps) => {
 		<>
 			{products?.map((product) => {
 				const quantity = getItemQuantity(product);
+				console.log(quantity);
+
 				return (
 					<div key={product.product_id} className={styles.productContainer}>
 						<div className={styles.productHeader}>
 							<h2>Name: {product.product_name}</h2>
-							<div>Category: {product.category}</div>
-							<div>price: {formatPrice(product.price)}</div>
+							<div>
+								<strong>price:</strong> {formatPrice(product.price)}
+							</div>
 						</div>
 
 						<div className={styles.productImg}>
@@ -51,16 +54,26 @@ export const Product = ({ products }: ProductListProps) => {
 
 						<div className={styles.productBody}>
 							<div className={styles.productDetails}>
-								<div>brand: {product.brand}</div>
-								<div>color: {product.color}</div>
+								<div>
+									<strong>brand:</strong> {product.brand}
+								</div>
+								<div>
+									<strong>color:</strong> {product.color}
+								</div>
 							</div>
 
 							<div>{product.description}</div>
 						</div>
 						<div className={styles.extraInfo}>
-							<div>inStock: {product.quantity_in_stock}</div>
-							<div>release_date: {product.release_date}</div>
-							<div>size: {product.size}</div>
+							<div>
+								<strong>Category:</strong> {product.category}
+							</div>
+							<div>
+								<strong>inStock:</strong> {product.quantity_in_stock}
+							</div>
+							<div>
+								<strong>size:</strong> {product.size}
+							</div>
 							<div className={styles.addRemoveBtnsContainer}>
 								<button
 									className={styles.addButton}
@@ -68,6 +81,9 @@ export const Product = ({ products }: ProductListProps) => {
 								>
 									Add to Cart
 								</button>
+								{quantity > 0 && (
+									<div className={styles.quantity}>Quantity: {quantity}</div>
+								)}
 							</div>
 						</div>
 					</div>
