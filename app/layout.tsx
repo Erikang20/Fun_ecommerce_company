@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ButtonMenu } from "./components/Button";
+import { CartProvider } from "./cart/cartContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,13 +20,15 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<div className="container">
-					<Link href="/">
-						<h1 className="mainHeading">Doggo Ipsum</h1>
-					</Link>
-					<ButtonMenu />
-					{children}
-				</div>
+				<CartProvider>
+					<div className="container">
+						<Link href="/">
+							<h1 className="mainHeading">Doggo Ipsum</h1>
+						</Link>
+						<ButtonMenu />
+						{children}
+					</div>
+				</CartProvider>
 			</body>
 		</html>
 	);

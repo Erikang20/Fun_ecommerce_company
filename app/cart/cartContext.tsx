@@ -4,7 +4,7 @@ import { ProductType, CartItemType } from "../types/productTypes";
 
 type CartContextType = {
 	cartItems: CartItemType[];
-	getItemQuantity: (product: ProductType) => void;
+	cartQuantity: number;
 	addToCart: (product: ProductType) => void;
 };
 
@@ -14,16 +14,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 	const [cartItems, setCartItems] = useState<CartItemType[]>([]);
 
 	const cartQuantity = cartItems.reduce(
-		(quantity, item) => item.product.quantity_in_stock + quantity,
+		(acc, quantity) => acc + quantity.quantity,
 		0
 	);
-
-	const getItemQuantity = (product: ProductType) => {
-		return (
-			cartItems.find((item) => item.product.product_id === product.product_id)
-				?.quantity || 0
-		);
-	};
 
 	const addToCart = (product: ProductType) => {
 		setCartItems((prevItems) => {
@@ -43,14 +36,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 		});
 	};
 
-	const removeFromCart = (product: ProductType) => {
-		setCartItems((prevItems) =>
-			prevItems.filter((item) => item.product.product_id !== product.product_id)
-		);
-	};
+	// const removeFromCart = (product: ProductType) => {
+	// 	setCartItems((prevItems) =>
+	// 		prevItems.filter((item) => item.product.product_id !== product.product_id)
+	// 	);
+	// };
 
 	return (
-		<CartContext.Provider value={{ cartItems, addToCart, getItemQuantity }}>
+		<CartContext.Provider value={{ cartItems, addToCart, cartQuantity }}>
 			{children}
 		</CartContext.Provider>
 	);

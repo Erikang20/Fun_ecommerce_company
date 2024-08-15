@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import { formatPrice } from "./actions";
 import { ProductType, CartItemType } from "../types/productTypes";
-import { CartProvider, useCart } from "../cart/cartContext";
+import { useCart } from "../cart/cartContext";
 
 type ProductListProps = {
 	products: ProductType[];
@@ -12,7 +12,7 @@ type ProductListProps = {
 
 export const Product = ({ products }: ProductListProps) => {
 	const [cartItems, setCartItems] = useState<CartItemType[]>([]);
-	const { addToCart, getItemQuantity } = useCart();
+	const { addToCart, cartQuantity } = useCart();
 
 	// const handleRemoveItem = (product: ProductType) => {
 	// 	setCartItems((prevItems) => {
@@ -36,8 +36,7 @@ export const Product = ({ products }: ProductListProps) => {
 	return (
 		<>
 			{products?.map((product) => {
-				const quantity = getItemQuantity(product);
-				console.log(quantity);
+				const quantity = cartQuantity;
 
 				return (
 					<div key={product.product_id} className={styles.productContainer}>
