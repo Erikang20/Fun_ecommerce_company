@@ -2,7 +2,7 @@
 	display: flex;
 	font-family: var(--font-mono);
 	position: relative;
-	bottom: 900px;
+	bottom: 700px;
 	overflow-x: hidden;
 	align-content: space-around;
 	flex-wrap: wrap;
@@ -12,6 +12,74 @@
 	overflow-x: hidden;
 }
 
-.addRemoveBtns {
+.cartContainer h1 {
+	text-align: center;
+}
+
+.shoppingCart {
+	margin: 20px auto auto 80px;
+	text-align: center;
+}
+
+.emptyState {
+	margin: 20px;
+}
+
+.checkoutItemContainer {
 	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-right: auto;
+	border: 5px solid rgb(182, 65, 154);
+	padding: 16px;
+	width: 500px;
+	box-shadow: 12px 8px 2px 1px rgba(219, 87, 107);
+	flex-direction: row;
+	align-items: center;
+	margin: 20px auto 20px;
+}
+
+.cartButton {
+	font-family: var(--font-mono);
+	background-color: rgb(104, 69, 202);
+	border: 2px solid rgb(67, 37, 151);
+	border-radius: 20px;
+	color: rgba(255, 255, 255, 0.65);
+	padding: 10px;
+	box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+	width: 100px;
+	height: 40px;
+}
+
+.cartButton:hover {
+	transition: all 0.4s;
+	background-color: var(--foreground-hover);
+	cursor: pointer;
+	color: rgba(255, 255, 255, 1);
+}
+
+.removeButton {
+	font-family: var(--font-mono);
+	border: 2px solid rgb(182, 65, 154);
+	border-radius: 20px;
+	background-color: rgb(214, 10, 10);
+	color: var(--background);
+	padding: 10px;
+	box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+	width: 100px;
+	height: 50px;
+}
+
+.removeButton:hover {
+	transition: all 0.4s;
+	background-color: rgb(240, 6, 6);
+	cursor: pointer;
+	color: rgba(255, 255, 255, 1);
+}
+
+.cartTotal {
+	display: flex;
+	margin-top: 25px;
+	justify-content: space-between;
+	align-items: center;
 }

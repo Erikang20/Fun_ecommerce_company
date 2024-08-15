@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { formatPrice } from "./actions";
-import { ProductType, CartItemType } from "../types/productTypes";
+import { ProductType } from "../types/productTypes";
 import { useCart } from "../cart/cartContext";
 
 type ProductListProps = {
@@ -11,32 +11,16 @@ type ProductListProps = {
 };
 
 export const Product = ({ products }: ProductListProps) => {
-	const [cartItems, setCartItems] = useState<CartItemType[]>([]);
-	const { addToCart, cartQuantity } = useCart();
-
-	// const handleRemoveItem = (product: ProductType) => {
-	// 	setCartItems((prevItems) => {
-	// 		const existingItem = prevItems.find(
-	// 			(item) => item.product.product_id === product.product_id
-	// 		);
-	// 		if (existingItem && existingItem.quantity > 1) {
-	// 			return prevItems.map((item) =>
-	// 				item.product.product_id === product.product_id
-	// 					? { ...item, quantity: item.quantity - 1 }
-	// 					: item
-	// 			);
-	// 		} else {
-	// 			return prevItems.filter(
-	// 				(item) => item.product.product_id !== product.product_id
-	// 			);
-	// 		}
-	// 	});
-	// };
+	const { addToCart, cartQuantity, removeFromCart, cartItems } = useCart();
+	console.log(cartQuantity);
 
 	return (
 		<>
 			{products?.map((product) => {
-				const quantity = cartQuantity;
+				const quantity =
+					cartItems.find(
+						(item) => item.product.product_id === product.product_id
+					)?.quantity || 0;
 
 				return (
 					<div key={product.product_id} className={styles.productContainer}>
@@ -73,17 +57,26 @@ export const Product = ({ products }: ProductListProps) => {
 							<div>
 								<strong>size:</strong> {product.size}
 							</div>
-							<div className={styles.addRemoveBtnsContainer}>
-								<button
-									className={styles.addButton}
-									onClick={() => addToCart(product)}
-								>
-									Add to Cart
-								</button>
-								{quantity > 0 && (
+						</div>
+
+						<div className={styles.addRemoveBtnsContainer}>
+							<button
+								className={styles.addButton}
+								onClick={() => addToCart(product)}
+							>
+								Add to Cart
+							</button>
+							{quantity > 0 && (
+								<>
 									<div className={styles.quantity}>Quantity: {quantity}</div>
-								)}
-							</div>
+									<button
+										onClick={() => removeFromCart(product)}
+										className={styles.removeButton}
+									>
+										Remove
+									</button>
+								</>
+							)}
 						</div>
 					</div>
 				);
