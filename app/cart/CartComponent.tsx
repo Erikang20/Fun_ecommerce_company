@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import { formatPrice } from "../collections/actions";
 import { useCart } from "./cartContext";
 import ShoppingCart from "@assets/shopping-cart.svg";
+import { RemoveButton } from "../components/RemoveButton";
 
 export const CartComponent = () => {
 	const { cartItems, cartQuantity, removeFromCart } = useCart();
@@ -39,13 +40,9 @@ export const CartComponent = () => {
 										<div>Quantity: {item.quantity}</div>
 									</div>
 								</div>
-
-								<button
-									onClick={() => removeFromCart(item.product)}
-									className={styles.removeButton}
-								>
-									Remove
-								</button>
+								<RemoveButton
+									removeFromCart={() => removeFromCart(item.product)}
+								/>
 							</div>
 						</>
 					))}

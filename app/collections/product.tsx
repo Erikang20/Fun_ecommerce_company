@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import { formatPrice } from "./actions";
 import { ProductType } from "../types/productTypes";
 import { useCart } from "../cart/cartContext";
+import { RemoveButton } from "../components/RemoveButton";
 
 type ProductListProps = {
 	products: ProductType[];
@@ -12,7 +13,6 @@ type ProductListProps = {
 
 export const Product = ({ products }: ProductListProps) => {
 	const { addToCart, cartQuantity, removeFromCart, cartItems } = useCart();
-	console.log(cartQuantity);
 
 	return (
 		<>
@@ -69,12 +69,9 @@ export const Product = ({ products }: ProductListProps) => {
 							{quantity > 0 && (
 								<>
 									<div className={styles.quantity}>Quantity: {quantity}</div>
-									<button
-										onClick={() => removeFromCart(product)}
-										className={styles.removeButton}
-									>
-										Remove
-									</button>
+									<RemoveButton
+										removeFromCart={() => removeFromCart(product)}
+									/>
 								</>
 							)}
 						</div>
