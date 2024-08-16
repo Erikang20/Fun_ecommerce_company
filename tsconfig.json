@@ -19,7 +19,8 @@
 			}
 		],
 		"paths": {
-			"@assets/*": ["./public/*"]
+			"@assets/*": ["./public/*"],
+			"@types/*": ["./app/types/*"]
 		}
 	},
 	"include": [

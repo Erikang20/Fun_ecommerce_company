@@ -12,7 +12,7 @@ type ProductListProps = {
 };
 
 export const Product = ({ products }: ProductListProps) => {
-	const { addToCart, cartQuantity, removeFromCart, cartItems } = useCart();
+	const { addToCart, removeFromCart, cartItems } = useCart();
 
 	return (
 		<>
