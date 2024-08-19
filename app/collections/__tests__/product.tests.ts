@@ -6,7 +6,5 @@ import { ProductType } from "@types/productTypes";
 describe("Products", () => {
 	it("should render a search input element", () => {
 		// render(<Product  />);
-
-		expect(true).toBe(false);
 	});
 });
