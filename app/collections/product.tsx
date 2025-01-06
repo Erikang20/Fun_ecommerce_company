@@ -3,9 +3,9 @@ import React from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { formatPrice } from "./actions";
-import { ProductType } from "../types/productTypes";
+import { ProductType } from "@types/productTypes";
 import { useCart } from "../cart/cartContext";
-import { RemoveButton } from "../components/RemoveButton";
+import { RemoveButton } from "@components/RemoveButton";
 
 type ProductListProps = {
 	products: ProductType[];
@@ -63,6 +63,7 @@ export const Product = ({ products }: ProductListProps) => {
 							<button
 								className={styles.addButton}
 								onClick={() => addToCart(product)}
+								data-testid="custom-element"
 							>
 								Add to Cart
 							</button>

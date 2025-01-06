@@ -1,6 +1,12 @@
 import type { Config } from "jest";
+import nextJest from "next/jest";
 
-const config: Config = {
+const createJestConfig = nextJest({
+	// Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+	dir: "./",
+});
+
+const customJestConfig: Config = {
 	verbose: true,
 	collectCoverage: false,
 	collectCoverageFrom: ["**/*.{ts,js,jsx}", "!**/node_modules/**"],
@@ -8,4 +14,4 @@ const config: Config = {
 	setupFilesAfterEnv: ["./jest.setup.ts"],
 };
 
-export default config;
+module.exports = createJestConfig(customJestConfig);

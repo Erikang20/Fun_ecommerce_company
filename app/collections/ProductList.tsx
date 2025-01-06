@@ -1,7 +1,7 @@
 import React from "react";
 import { Product } from "../collections/product";
 import styles from "./styles.module.css";
-import { ProductType } from "../types/productTypes";
+import { ProductType } from "@types/productTypes";
 
 type ProductListProps = {
 	products: ProductType[];

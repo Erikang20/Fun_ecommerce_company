@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 import { formatPrice } from "../collections/actions";
 import { useCart } from "./cartContext";
 import ShoppingCart from "@assets/shopping-cart.svg";
-import { RemoveButton } from "../components/RemoveButton";
+import { RemoveButton } from "@components/RemoveButton";
 
 export const CartComponent = () => {
 	const { cartItems, cartQuantity, removeFromCart } = useCart();

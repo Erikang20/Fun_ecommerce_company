@@ -1,5 +1,5 @@
 import { getLocalData } from "../lib/collectionData";
-import { SearchProduct } from "../components/SearchProduct";
+import { SearchProduct } from "@components/SearchProduct";
 import styles from "./styles.module.css";
 
 async function Collections() {
